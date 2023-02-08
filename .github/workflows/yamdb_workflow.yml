@@ -52,6 +52,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
+          context: ./api_yamdb/
           tags: diva2208/yamdb_final:latest
   deploy:
     runs-on: ubuntu-latest
