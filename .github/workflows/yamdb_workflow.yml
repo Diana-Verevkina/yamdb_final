@@ -52,7 +52,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: diva2208/infra_actions:latest
+          tags: diva2208/yamdb_final:latest
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
@@ -66,10 +66,10 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             #pull образа с DockerHub
-            sudo docker pull diva2208/infra_actions
+            sudo docker pull diva2208/yamdb_final
             #остановка всех контейнеров
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 8080:8080 diva2208/infra_actions
+            sudo docker run --rm -d -p 8080:8080 diva2208/yamdb_final
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
