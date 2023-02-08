@@ -9,9 +9,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework_simplejwt.tokens import AccessToken
+from reviews.models import User
 
 from .serializers import RegisterDataSerializer, TokenSerializer
-from reviews.models import User
 
 msg_email_exists = 'Электронная почта уже занята!'
 msg_username_exists = 'username уже занят!'

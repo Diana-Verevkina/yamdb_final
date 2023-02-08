@@ -3,9 +3,9 @@ import csv
 from django.conf import settings
 from django.core.management import BaseCommand
 
+from ...models import (Category, Comment, Genre, Review, Title, TitlesGenre,
+                       User)
 from ._utils import loading
-from reviews.models import (Category, Genre, Title, TitlesGenre, Review, User,
-                            Comment)
 
 path = f'{settings.BASE_DIR}/static/data'
 
@@ -28,10 +28,9 @@ class Command(BaseCommand):
             if model.objects.exists():
                 raise Exception(f'Ошибка. Данные в модель {model.__name__} '
                       f'уже загружены.')
-            else:
-                print(f'Загрузка данных в модель {model.__name__}')
-                for row in csv.DictReader(open(f'{path}/{file}.csv',
-                                               encoding='utf-8')):
-                    columns = loading(model, row)
-                    columns.save()
-                print(f'Данные в модель {model.__name__} загружены')
+            print(f'Загрузка данных в модель {model.__name__}')
+            for row in csv.DictReader(open(f'{path}/{file}.csv',
+                                           encoding='utf-8')):
+                columns = loading(model, row)
+                columns.save()
+            print(f'Данные в модель {model.__name__} загружены')

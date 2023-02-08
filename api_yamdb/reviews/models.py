@@ -1,9 +1,8 @@
-from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.core.validators import (MaxValueValidator, MinValueValidator,
+                                    RegexValidator)
 from django.db import models
-from django.core.validators import (
-    MinValueValidator, MaxValueValidator, RegexValidator
-)
 
 from .validators import get_year
 
@@ -79,7 +78,7 @@ class User(AbstractUser):
         return f'{self.username}({self.email})'
 
 
-class Category_Genre_Model(models.Model):
+class CategoryGenreModel(models.Model):
     """Материнская модель для моделей Category и Genre."""
 
     name = models.CharField(verbose_name='Название',
@@ -95,18 +94,18 @@ class Category_Genre_Model(models.Model):
         return self.name
 
 
-class Category(Category_Genre_Model):
+class Category(CategoryGenreModel):
     """Категории произведений."""
 
-    class Meta(Category_Genre_Model.Meta):
+    class Meta(CategoryGenreModel.Meta):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
 
-class Genre(Category_Genre_Model):
+class Genre(CategoryGenreModel):
     """Жанры произведений."""
 
-    class Meta(Category_Genre_Model.Meta):
+    class Meta(CategoryGenreModel.Meta):
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
 

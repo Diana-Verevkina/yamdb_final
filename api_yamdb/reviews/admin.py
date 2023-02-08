@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Genre, Title, User, Review, Comment
+from .models import Category, Comment, Genre, Review, Title, User
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -20,8 +20,7 @@ class TitleInline(admin.TabularInline):
 class TitleAdmin(admin.ModelAdmin):
 
     def view_genre(self, obj):
-        genres = (', '.join([str(genre) for genre in obj.genre.all()]))
-        return genres
+        return ', '.join([str(genre) for genre in obj.genre.all()])
 
     view_genre.short_description = 'Genres'
 
