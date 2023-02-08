@@ -5,8 +5,8 @@ from rest_framework import filters, permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
+from reviews.models import Category, Genre, Review, Title, User
 
-from ..reviews.models import Category, Genre, Review, Title, User
 from .filters import TitlesFilter
 from .mixins import CategoryGenreViewSet
 from .permissions import (IsAdmin, IsAdminModeratorOwnerOrReadOnly,
