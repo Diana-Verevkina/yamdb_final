@@ -29,10 +29,12 @@ jobs:
         run: |
           # запуск проверки проекта по flake8
           python -m flake8
-      - name: django tests
+      - name: folder
         run: |
           # перейти в папку, содержащую manage.py 
           cd api_yamdb/
+      - name: pytests
+        run: |
           # запустить написанные разработчиком тесты
           pytest
 
