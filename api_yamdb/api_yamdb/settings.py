@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 111)
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('HOSTS', ['*'])
 
 AUTH_USER_MODEL = 'reviews.user'
 
@@ -71,9 +71,14 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 load_dotenv()
 
+if os.getenv('DB_ENGINE'):
+    DB = os.getenv('DB_ENGINE')
+else:
+    DB = 'django.db.backends.sqlite'
+
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
+        'ENGINE': os.getenv(DB, 'django.db.backends.postgresql'),
         'NAME': os.getenv('DB_NAME', 'postgres'),
         'USER': os.getenv('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),

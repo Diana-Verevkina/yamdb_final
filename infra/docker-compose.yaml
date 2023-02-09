@@ -11,9 +11,6 @@ services:
 
   # web container
   web:
-    build:
-      context: ../
-      dockerfile: ../Dockerfile
     image: diva2208/yamdb_final:latest
     restart: always
     volumes:
