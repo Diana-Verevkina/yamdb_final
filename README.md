@@ -1,6 +1,7 @@
 # CI/CD для проекта API YAMDB
 
 ![workflow](https://github.com/Diana-Verevkina/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+http://158.160.22.28/admin/
 
  <img src="img.png" style="height: 180pt">
 
