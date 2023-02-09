@@ -57,11 +57,7 @@ jobs:
           tags: diva2208/yamdb_final:latest
 
   deploy:
-    on:
-      push:
-        branches:
-          - '*'
-          - '!master'
+    if: github.ref_name == 'master' or 'main'
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
