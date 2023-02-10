@@ -71,10 +71,10 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 load_dotenv()
 
-if os.getenv('DB_ENGINE'):
-    DB = os.getenv('DB_ENGINE')
-else:
+if os.getenv('TEST_DB'):
     DB = 'django.db.backends.sqlite'
+else:
+    DB = os.getenv('DB_ENGINE')
 
 DATABASES = {
     'default': {
